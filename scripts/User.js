@@ -18,10 +18,10 @@ class User{
     constructor(nom, prenom, email, motdepasse){
         try{
             // On construit l'utilisateur
-            setNom(nom);
-            setPrenom(prenom);
-            setEmail(email);
-            setMotdepasse(motdepasse);
+            this.setNom(nom);
+            this.setPrenom(prenom);
+            this.setEmail(email);
+            this.setMotdepasse(motdepasse);
 
         // On récupère les éventuelles erreurs
         } catch(e){
@@ -77,4 +77,9 @@ class User{
         // On implémente
         else this.motdepasse = motdepasse;
     }
+
+
+    static toString(user){ return user.getNom() + " " + user.getPrenom() + " " + user.getEmail(); }
+
+    static affiche(user){ console.log(toString(user)); }
 }

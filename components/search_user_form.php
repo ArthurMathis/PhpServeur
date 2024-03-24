@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-<form method="post" class="user_form">
+<form method="post" class="user_form" id="search_user_form">
     <h1>Recherche d'un utilisateur</h1>
     <section>
         <label for="nom">Nom :</label>
@@ -111,12 +111,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <script src="../scripts/user_table.js"></script>
 <!-- Script JavaScript -->
 <script>
-    const users = <?php echo json_encode($results); ?>;
-    if(users !== null){
-        users.forEach(function (user) {
-            console.log(user.nom, user.prenom, user.email, user.motdepasse);
-        });
-    }
+    // Vérification de la présence des résultats
+    <?php if(isset($results) && !empty($results)): ?>
+        // Conversion des résultats en objet JavaScript
+        const query = <?php echo json_encode($results); ?>;
+
+        // Vérification que la requête a retourné des résultats
+        if(query !== null){
+            query.forEach(function (c) {
+                console.log("Résultat de la requête : " + c.nom + " " + c.prenom + " " + c.email + " " + c.motdepasse);
+            });
+
+            // Code
+            document.body.append(makeTable(query));
+        }
+    <?php endif; ?>
 </script>
 
 <?php require_once "footer.php"; ?>
