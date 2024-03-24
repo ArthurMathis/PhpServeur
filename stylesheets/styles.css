@@ -1,6 +1,6 @@
 :root {
   --color: #333;
-  --bgColor: #F7F7F7;
+  --bgColor: #F7F5F5;
 }
 
 * {
@@ -80,8 +80,8 @@ a {
   padding: 1%;
   transition: transform 0.25s;
   border-radius: 12px;
-  background-color: var(--bgColor);
-  border: none;
+  border: 1px solid var(--color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .accueil a:hover {
   transform: scale(1.05);

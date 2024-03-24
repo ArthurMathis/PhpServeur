@@ -1,5 +1,9 @@
+<nav class="navigation_barre">
+    <a href="../index.php"><h2>Home.</h2></a>
+</nav>
 <?php
 require "header.php";
+include "server_connect.php";
 include "../objetcs/User.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") try{
@@ -13,14 +17,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST") try{
     // On génère un utilisateur
     else $new_user = new User($_POST["nom"], $_POST["prenom"], $_POST["email"], $password);
 
-    // On génère une nouvelle notification
-    echo "<script> 
+    try{
+        // On récupère l'accès à la base de données
+        global $bdd;
+
+        // On génère une requête MySQL
+        $query =  $bdd->prepare("INSERT INTO user (nom, prenom, email, motdepasse)  VALUES (:nom, :prenom, :email, :motdepasse)");
+        // On envoie la requête au serveur
+        $query->execute([
+            "nom" => $new_user->getNom(),
+            "prenom" =>  $new_user->getPrenom(),
+            "email" => $new_user->getEmail(),
+            "motdepasse" =>  $new_user->getMotdepasse()
+        ]);
+
+        // On génère une nouvelle notification
+        echo "<script> 
             const notif = new notification(\"Nouvel utilisateur ajouté !\").affiche();
             document.body.appendChild(notif);
             setTimeout(function() {
                 notif.remove();
             }, 3000);
         </script>";
+    } catch(PDOException $e){
+        echo "<script>
+            const notif = new notification(\"".$e->getMessage()."\").affiche();
+            document.body.appendChild(notif);
+            setTimeout(function() {
+                notif.remove();
+            }, 3000);
+        </script>";
+    }
 
 // On récuèpre les éventuelles erreurs
 } catch(InvalidUserNomException $e){

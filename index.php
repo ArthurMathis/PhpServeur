@@ -17,11 +17,9 @@
 <div class="accueil">
     <h1>Bienvenu sur votre site internet</h1>
     <a href="components/add_user_form.php">Ajouter un nouvel utilisateur</a>
-    <a href="components/remove_user_form.php">Rechercher un utilisateur</a>
+    <a href="components/search_user_form.php">Rechercher un utilisateur</a>
+    <a href="components/remove_user_form.php">Supprimer un utilisateur</a>
 </div>
-
-<!-- Connexion à la base de données-->
-<?php require_once "components/server_connect.php"; ?>
 
 <!-- Pied de page -->
 <?php include "components/footer.php";  ?>

@@ -1,6 +1,4 @@
 <?php
-include "objects/notifications.php";
-
 /// Adresse du serveur MySQL
 $host = "localhost:3307";
 ///  Nom de la base de données
@@ -18,13 +16,7 @@ try {
 
     // Notification de connexion réussie
     $message = "Connexion à " . $dbname . " réussie !";
-    echo "<script>
-            const notif = new notification(\"".$message."\").affiche();
-            document.body.appendChild(notif);
-            setTimeout(function() {
-                notif.remove();
-            }, 3000);
-        </script>";
+    echo "<script> console.log(\"".$message."\"); </script>";
 
 // On récupère les ventuelles erreurs de connexion
 } catch (PDOException $e) {
@@ -37,4 +29,3 @@ try {
             }, 3000);
         </script>";
 }
-?>
