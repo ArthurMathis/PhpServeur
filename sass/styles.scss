@@ -9,7 +9,6 @@
   box-sizing: border-box;
 }
 
-h1{ padding: 5%; }
 h1::after{
   content: '';
   display: block;
@@ -66,20 +65,34 @@ a {
   left: 0;
 
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
 
   width: 100vw;
   height: 6.5%;
 
-  border-bottom: 0.25px solid black;
+  border-bottom: 1px solid var(--color);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.accueil{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 65%;
+
+  padding: 5%;
 
   & a {
-    padding: 0 2%;
-    will-change: text-decoration;
+    margin: 2%;
+    padding: 1%;
     transition: transform 0.25s;
 
+    border-radius: 12px;
+    background-color: var(--bgColor);
+    border: none;
     &:hover { transform: scale(1.05); }
   }
 }
