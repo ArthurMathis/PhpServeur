@@ -1,9 +1,10 @@
+<?php require "header.php"; ?>
+
 <nav class="navigation_barre">
     <a href="../index.php"><h2>Home.</h2></a>
 </nav>
-<?php
-require "header.php";
-include "server_connect.php";
+
+<?php include "server_connect.php";
 include "../objetcs/User.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") try{
