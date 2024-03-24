@@ -118,12 +118,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Vérification que la requête a retourné des résultats
         if(query !== null){
-            query.forEach(function (c) {
-                console.log("Résultat de la requête : " + c.nom + " " + c.prenom + " " + c.email + " " + c.motdepasse);
-            });
+            // On génère un tableau affichant les utilisateurs récupérés par la requête
+            const table = makeTable(query);
+            document.body.append(table);
+            // On efface le formulaire
+            const form = document.getElementById("search_user_form");
+            form.style.display = "none";
 
-            // Code
-            document.body.append(makeTable(query));
+            // On génère un bouton de raffraichissemnt
+            const button = document.createElement('button');
+            button.id = "search_button";
+            button.textContent = "Nouvelle recherche";
+            document.body.append(button);
+            // On ajoute une écoute d'event
+            button.addEventListener("click", () => {
+                // On affiche le formualire
+                form.style.display = "flex";
+                // On supprime le tableau et le bouton
+                table.remove();
+                button.remove();
+            });
         }
     <?php endif; ?>
 </script>
