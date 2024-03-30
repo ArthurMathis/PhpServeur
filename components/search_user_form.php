@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $results = $query->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // On récupère les éventuelles erreurs
+    // On récupère les éventuelles erreurs
     } catch(PDOException $e){
         // On génère une nouvelle notification
         echo "<script>
@@ -93,26 +93,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <h1>Recherche d'un utilisateur</h1>
     <section>
         <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom">
+        <input type="text" id="nom" name="nom" autocomplete="name">
     </section>
     <section>
         <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom">
+        <input type="text" id="prenom" name="prenom" autocomplete="given-name">
     </section>
     <br>
     <section>
         <label for="email">Adresse mail :</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" autocomplete="email">
     </section>
     <button type="submit" class="submit_button" value="search_user">Rechercher</button>
 </form>
 
-<script src="../scripts/User.js"></script>
 <script src="../scripts/user_table.js"></script>
 <!-- Script JavaScript -->
 <script>
     // Vérification de la présence des résultats
-    <?php if(isset($results) && !empty($results)): ?>
+    <?php if(!empty($results)): ?>
         // Conversion des résultats en objet JavaScript
         const query = <?php echo json_encode($results); ?>;
 

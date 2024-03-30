@@ -43,3 +43,48 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
+
+#search_button {
+  padding: 1%;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--color);
+  color: var(--bgColor);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#search_button:hover {
+  cursor: pointer;
+}
+
+.user_table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+  & thead {
+    background-color: #f2f2f2;
+  }   
+
+  & th {
+    padding: 12px;
+    text-align: left;
+  }
+
+  & tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+
+  & td {
+    padding: 10px;
+  }
+
+  & a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+  }
+}
