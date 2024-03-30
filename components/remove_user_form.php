@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") try {
     else {
         // ON envoie l'utilisateur
         session_start();
-        $_SESSION['user'] = ["nom" => $nom, "prenom" => $prenom, "email" => $email, 'password' => $results['password']];
+        $_SESSION['user'] = ["nom" => $nom, "prenom" => $prenom, "email" => $email, 'password' => $results[0]['motdepasse']];
         // On redirige la page
         header("Location: confirm_remove_user_form.php");
         exit;
